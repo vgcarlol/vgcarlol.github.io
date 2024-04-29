@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import Post from '../components/Blog/Post';
-// import blogService from '../services/blogService';
+import { getPosts } from '../api/BlogService';
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // blogService.getPosts().then((data) => {
-    //   setPosts(data);
-    //   setLoading(false);
-    // });
+    const fetchPosts = async () => {
+      try {
+        const fetchedPosts = await getPosts();
+        setPosts(fetchedPosts);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    // Ejemplo de datos estáticos mientras no hay API
-    const dummyPosts = [
-      { id: 1, title: 'Mi primer post', date: '2024-04-28', content: 'Contenido del primer post...' },
-      // Más publicaciones...
-    ];
-
-    setPosts(dummyPosts);
-    setLoading(false);
+    fetchPosts();
   }, []);
 
   if (loading) {
@@ -29,10 +28,10 @@ const BlogPage = () => {
   return (
     <div className="container-fluid mt-4">
       <h1 className="text-center mb-4">Blog</h1>
-      <div className="row justify-content-center">
-        {posts.map(post => (
-          <div className="col-sm-12 col-md-6 col-lg-4 mb-3 d-flex align-items-stretch" key={post.id}>
-            <Post title={post.title} content={post.content} date={post.date} />
+      <div className="row">
+        {posts.map((post) => (
+          <div className="col-12 col-md-6 col-lg-4 mb-4" key={post.id}>
+            <Post title={post.title} content={post.content} publishDate={new Date(post.publish_date).toLocaleDateString()} />
           </div>
         ))}
       </div>
