@@ -1,13 +1,8 @@
 <p align="center">
-  <img src="https://ruta/a/tu/logo.png"/>
+  <img src="https://panel.vallague.com/assets/uploads/user5b384ce32d8cdef02bc3a139d4cac0a22bb029e8/b8cbc3194c8ea2a73160a4ee14ab5ae3.png"/>
 </p>
 
 ---
-
-[![Build status: Linux](https://img.shields.io/travis/tu-usuario/tu-repositorio.svg?style=flat-square)](https://travis-ci.org/tu-usuario/tu-repositorio)
-[![Build status: Windows](https://img.shields.io/appveyor/ci/tu-usuario/tu-repositorio/master.svg?style=flat-square)](https://ci.appveyor.com/project/tu-usuario/tu-repositorio/branch/master)
-[![Dependency Status](https://david-dm.org/tu-usuario/tu-repositorio.svg?style=flat-square)](https://david-dm.org/tu-usuario/tu-repositorio)
-[![Coverage Status](https://img.shields.io/coveralls/tu-usuario/tu-repositorio/master.svg?style=flat-square)](https://coveralls.io/github/tu-usuario/tu-repositorio?branch=master)
 
 # Descripción del Proyecto
 
@@ -28,7 +23,7 @@ Una plataforma de blog desarrollada con React y Node.js, que permite a los usuar
 
 2. **Clonar el Repositorio**
 
-    `git clone https://github.com/tu-usuario/tu-repositorio.git`
+    `git clone https://github.com/vgcarlol/vgcarlol.github.io`
     `cd tu-repositorio`
 
 3. **Instalar Dependencias**
