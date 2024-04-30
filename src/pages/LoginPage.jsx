@@ -10,13 +10,32 @@ const LoginPage = () => {
     setCredentials(prevCredentials => ({ ...prevCredentials, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Aquí la lógica de autenticación
-    console.log(credentials);
-    // Si la autenticación es correcta, puedes redirigir al admin
-    navigate('/admin');
-  };
+    try {
+        const response = await fetch('http://localhost:3000/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(credentials)
+        });
+        const data = await response.json();
+        if (response.ok) {
+            console.log('Login successful:', data);
+            // Guarda el token en localStorage o en un contexto global si es necesario
+            localStorage.setItem('token', data.token);
+            // Redirige al usuario a la página de administración
+            navigate('/admin');
+        } else {
+            // Maneja errores como credenciales incorrectas
+            console.error('Login failed:', data.message);
+            alert('Error en el inicio de sesión: ' + data.message);
+        }
+    } catch (error) {
+        console.error('Network error:', error);
+        alert('Error de red al intentar iniciar sesión.');
+    }
+};
+
 
   return (
     <div className="container mt-4">
