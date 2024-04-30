@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Post from '../components/Blog/Post';
+import '../assets/BlogPage.css';
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);

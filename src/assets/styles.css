@@ -1,0 +1,52 @@
+/* Estilos para el Header */
+.navbar {
+    background-image: linear-gradient(to right, #65dfc9, #6cdbeb); /* Fondo con gradiente */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand, .nav-link {
+    color: #ffffff !important; /* Texto blanco para mayor contraste */
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #ade8f4 !important; /* Color más claro al pasar el mouse */
+}
+
+@media (max-width: 992px) {
+    .navbar-nav {
+        margin-top: 10px;
+    }
+}
+
+
+/* Estilos para asegurar que el footer esté al pie de la página */
+html, body {
+    height: 100%; /* Establece la altura de la página completa */
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    display: flex;
+    flex-direction: column; /* Orienta los elementos en columna */
+    min-height: 100%; /* Altura mínima para cubrir la página completa */
+}
+
+footer {
+    background-color: #212529; /* Color oscuro para el fondo */
+    color: #000000; /* Texto en color claro */
+    text-align: center;
+    padding: 20px 0; /* Ajuste del espaciado vertical */
+    margin-top: auto; /* Empuja el footer al fondo */
+}
+
+footer a {
+    color: #000000;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #000000;
+    text-decoration: underline;
+}
