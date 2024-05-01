@@ -1,8 +1,8 @@
 ---
 # Enlace:
-- Enlace: https://spectacular-starlight-8eae73.netlify.app/
-- Usuario administrador: admin1
-- Contraseña administrador: your_password_here 
+- **Enlace**: https://spectacular-starlight-8eae73.netlify.app/
+- **Usuario administrador**: admin1
+- **Contraseña administrador**: your_password_here 
 
 
 # Descripción del Proyecto
