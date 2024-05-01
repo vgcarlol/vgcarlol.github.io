@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = ({ logout, isAuthenticated }) => {  // Asegúrate de recibir estas props
+const Header = ({ logout, isAuthenticated }) => {  
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -20,9 +20,11 @@ const Header = ({ logout, isAuthenticated }) => {  // Asegúrate de recibir esta
                 <Link className="nav-link" to="/login">Iniciar sesión</Link>
               </li>
             ) : (
-              <li className="nav-item">
-                <button onClick={logout} className="nav-link">Cerrar sesión</button>
-              </li>
+              <><li className="nav-item">
+                  <Link className="nav-link" to="/admin">Dashboard</Link>
+                </li><li className="nav-item">
+                    <button onClick={logout} className="nav-link">Cerrar sesión</button>
+                  </li></>
             )}
           </ul>
         </div>

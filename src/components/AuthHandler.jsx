@@ -14,7 +14,7 @@ const AuthHandler = ({ setIsAuthenticated }) => {
 
         if (!isAuthenticated) {
             // Solo redirigir al login si no estamos ya en una ruta que no requiere autenticación
-            if (location.pathname !== '/' && location.pathname !== '/login') {
+            if (location.pathname !== '/' && location.pathname !== '/login' && !location.pathname.startsWith('/posts/')) {
                 navigate('/login');
             }
         }

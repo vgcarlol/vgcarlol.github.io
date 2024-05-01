@@ -3,6 +3,11 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
+.link {
+    text-decoration: none; 
+    color: inherit; 
+}
+
 h1 {
     color: #ff6584; /* Título en rosa */
     margin-bottom: 20px;
@@ -44,5 +49,21 @@ h1 {
 @media (max-width: 768px) {
     .card {
         margin: 10px;
+    }
+}
+
+
+/* Estilos para la imagen */
+.image-post {
+    max-width: 100%;
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+}
+
+/* Estilos adicionales para dispositivos pequeños */
+@media (max-width: 768px) {
+    .image-post {
+        max-width: 100%;
     }
 }

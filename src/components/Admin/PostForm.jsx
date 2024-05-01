@@ -1,44 +1,66 @@
-import React, { useState } from 'react';
-import '../../assets/admin-area.css';
+import React, { useState, useEffect } from 'react';
+import ImageUploadForm from './ImageUploadForm'; // Importa el componente de carga de imágenes
 
-const PostForm = ({ onSave }) => {
-  const [post, setPost] = useState({ title: '', content: '' });
+const PostForm = ({ onSave, initialPost = null }) => {
+    const [post, setPost] = useState({ title: '', content: '', imageUrl: '' }); // Agrega el estado para la URL de la imagen
+    const [status, setStatus] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setPost({ ...post, [name]: value });
-  };
+    useEffect(() => {
+        if (initialPost) {
+            setPost(initialPost);
+        }
+    }, [initialPost]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSave(post);
-    setPost({ title: '', content: '' }); // Reset form after save
-  };
+    const handlePostChange = (e) => {
+        const { name, value } = e.target;
+        setPost(prev => ({ ...prev, [name]: value }));
+    };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Título</label>
-      <input
-        type="text"
-        id="title"
-        name="title"
-        value={post.title}
-        onChange={handleChange}
-        required
-      />
+    const handleImageUpload = (imageUrl) => {
+        setPost(prev => ({ ...prev, imageUrl })); // Actualiza el estado con la URL de la imagen cargada
+    };
 
-      <label htmlFor="content">Contenido</label>
-      <textarea
-        id="content"
-        name="content"
-        value={post.content}
-        onChange={handleChange}
-        required
-      />
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onSave(post).then(() => {
+            setPost({ title: '', content: '', imageUrl: '' }); // Reset form after save
+            setStatus('Post guardado con éxito.');
+            setTimeout(() => setStatus(''), 3000);
+        }).catch(() => {
+            setStatus('Error al guardar el post.');
+            setTimeout(() => setStatus(''), 3000);
+        });
+    };
 
-      <button type="submit">Guardar</button>
-    </form>
-  );
+    return (
+        <form onSubmit={handleSubmit} className="admin-form">
+            <label htmlFor="title">Título</label>
+            <input
+                type="text"
+                id="title"
+                name="title"
+                value={post.title}
+                onChange={handlePostChange}
+                required
+                className="input-field"
+            />
+
+            <label htmlFor="content">Contenido</label>
+            <textarea
+                id="content"
+                name="content"
+                value={post.content}
+                onChange={handlePostChange}
+                required
+                className="textarea-field"
+            />
+
+            <ImageUploadForm onUpload={handleImageUpload} />
+
+            <button type="submit" className="admin-button">Guardar</button>
+            {status && <p className="status-message">{status}</p>}
+        </form>
+    );
 };
 
 export default PostForm;

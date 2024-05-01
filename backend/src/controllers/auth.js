@@ -22,6 +22,5 @@ export function authenticatedFetch(url, options = {}) {
 
 export function logout() {
     localStorage.removeItem('jwtToken');
-    // Aquí podrías redirigir al usuario al login usando react-router o recargar la página
-    window.location.href = '/login'; // Asumiendo que usas react-router
+    window.location.href = '/login'; 
 }

@@ -2,16 +2,26 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
-const swaggerSpec = require('./swaggerOptions'); // Asegúrate de tener este archivo configurado
+const swaggerSpec = require('./swaggerOptions');
 
 const postsRoutes = require('./routes/postsRoutes');
-const authRoutes = require('./routes/authRoutes'); // Importa las rutas de autenticación
+const authRoutes = require('./routes/authRoutes');
 const errorHandler = require('./middlewares/ErrorHandler');
 const logRequests = require('./middlewares/logRequests');
 const notFoundHandler = require('./middlewares/notFoundHandler');
+const multer = require('multer'); 
+const upload = multer({ dest: './uploads/' }); 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Ruta para manejar la carga de imágenes NO LOGRÉ IMPLEMENTARLA
+app.post('./upload', upload.single('image'), (req, res) => {
+    const imageUrl = req.file.path; 
+    res.json({ imageUrl });
+  });
+  
+
 
 // Middlewares
 app.use(cors());

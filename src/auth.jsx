@@ -1,11 +1,11 @@
 // auth.js
 export function logout() {
-    localStorage.removeItem('jwtToken');  // Asegúrate de usar la clave correcta aquí
-    window.location.href = '/login';      // Redirecciona al usuario al login
+    localStorage.removeItem('jwtToken');  
+    window.location.href = '/login';      
 }
 
 export function handleLoginSuccess(token) {
-    localStorage.setItem('jwtToken', token); // Guardar el token con la clave 'jwtToken'
+    localStorage.setItem('jwtToken', token); 
 }
 
 

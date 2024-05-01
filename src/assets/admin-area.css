@@ -1,25 +1,36 @@
-/* admin-area.css */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #dc3545;
+    --edit-color: #ffc107;
+    --edit-hover-color: #e0a800;
+    --delete-hover-color: #c82333;
+    --background-color: #f8f9fa;
+    --text-color: #333;
+    --border-color: #dee2e6;
+}
+
 .admin-container {
     padding: 20px;
-    max-width: 800px; /* Limita el ancho y centra el contenedor */
-    margin: 20px auto; /* Centra el contenedor de forma horizontal */
-    background-color: #f8f9fa;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: var(--background-color);
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
 }
 
 .admin-header {
-    text-align: center; /* Centra el título */
-    border-bottom: 2px solid #dee2e6;
+    text-align: center;
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
 .admin-button {
-    display: block; /* Asegura que el botón sea un bloque para centrarlo */
-    width: fit-content; /* Ajusta el ancho del botón al contenido */
-    margin: 0 auto 20px; /* Centra el botón y añade espacio debajo */
-    background-color: #007bff;
+    display: block;
+    width: fit-content;
+    margin: 0 auto 20px;
+    background-color: var(--primary-color);
     color: white;
     padding: 10px 15px;
     border: none;
@@ -29,15 +40,7 @@
 }
 
 .admin-button:hover {
-    background-color: #0056b3;
-}
-
-.admin-form {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+    background-color: #000e1d;
 }
 
 .post-item {
@@ -45,34 +48,48 @@
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    position: relative; /* Para posicionar absolutamente los botones de control */
-}
-
-.post-controls {
-    top: 10px;
-    right: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .post-controls button {
-    background-color: #dc3545; /* Rojo para el botón eliminar */
+    background-color: var(--secondary-color);
     color: white;
     border: none;
     border-radius: 4px;
     padding: 5px 10px;
-    margin-left: 5px; /* Espaciado entre botones */
+    margin-left: 5px;
     cursor: pointer;
 }
 
 .post-controls button.edit {
-    background-color: #ffc107; /* Amarillo para el botón editar */
+    background-color: var(--edit-color);
 }
 
 .post-controls button.edit:hover {
-    background-color: #e0a800;
+    background-color: var(--edit-hover-color);
 }
 
 .post-controls button.delete:hover {
-    background-color: #c82333;
+    background-color: var(--delete-hover-color);
 }
 
+
+.input-field, .textarea-field {
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+
+.textarea-field {
+    height: 150px; 
+    resize: vertical; 
+}
+
+.admin-form button {
+    display: block; 
+    width: 100%; 
+    margin-top: 10px;
+}

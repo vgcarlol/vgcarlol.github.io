@@ -19,7 +19,7 @@ Una plataforma de blog desarrollada con React y Node.js, que permite a los usuar
 
 1. **Configuración Inicial**
 
-    Asegúrate de tener Node.js y npm instalados en tu máquina.
+    Asegúrate de tener Node.js y npm instalados en tu máquina. Además, recuerda modificar los datos de la conexión en el backend/src/utils/db.js
 
 2. **Clonar el Repositorio**
 
@@ -37,8 +37,10 @@ Una plataforma de blog desarrollada con React y Node.js, que permite a los usuar
 
 5. **Iniciar la Aplicación**
 
-    `npm start`
-    Haz esto en la carpeta principal y también en la subcarpeta "backend".
+    `npm run dev`
+    Haz esto en la carpeta principal".
+    `npm start dev` 
+    Haz esto en la carpeta "backend"
 
     Esto ejecutará el servidor y abrirá la aplicación en tu navegador predeterminado.
 
@@ -49,6 +51,11 @@ Una plataforma de blog desarrollada con React y Node.js, que permite a los usuar
     Ejecuta este comando para crear una versión optimizada de la aplicación lista para producción.
 
 ---
+
+## Video de funcionamiento:
+
+- Enlace: https://youtu.be/yGnv3oUw0n4
+
 
 ## ¿Problemas?
 

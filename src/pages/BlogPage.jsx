@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; 
 import Post from '../components/Blog/Post';
 import '../assets/BlogPage.css';
+import imgDef from '../assets/img-def.png'
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);
@@ -11,12 +13,11 @@ const BlogPage = () => {
       try {
         const response = await fetch('http://localhost:3000/posts');
         const data = await response.json();
-        console.log(data); // Verifica toda la estructura del objeto recibido
         if (data && Array.isArray(data.rows)) {
-          setPosts(data.rows); // Usa 'data.rows' para acceder a los posts
+          setPosts(data.rows);
         } else {
           console.error('Data received is not formatted correctly:', data);
-          setPosts([]); // Evita errores en caso de formato inesperado
+          setPosts([]);
         }
       } catch (error) {
         console.error('Error fetching posts:', error);
@@ -28,6 +29,11 @@ const BlogPage = () => {
     fetchPosts();
   }, []);
 
+  const truncateContent = (content) => {
+    const wordLimit = 500;
+    return content.split(" ").slice(0, wordLimit).join(" ") + (content.split(" ").length > wordLimit ? "..." : "");
+  };
+
   if (loading) {
     return <div className="container mt-4">Cargando...</div>;
   }
@@ -38,11 +44,14 @@ const BlogPage = () => {
       <div className="row">
         {posts.map((post) => (
           <div className="col-12 col-md-6 col-lg-4 mb-4" key={post.id}>
+          <Link to={`/posts/${post.id}`} className="link">
             <Post 
+              img={imgDef}
               title={post.title} 
-              content={post.content} 
+              content={truncateContent(post.content)} 
               publishDate={new Date(post.publish_date).toLocaleDateString()}
             />
+          </Link>
           </div>
         ))}
       </div>
